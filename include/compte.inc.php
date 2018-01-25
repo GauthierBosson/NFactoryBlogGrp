@@ -1,3 +1,18 @@
+<h1>Mon compte</h1>
+<?php
+
+if (!isset($_SESSION['login'])) {
+    header ('Location: compte.php');
+    exit();
+}
+$mail = $_POST['mail'];
+$db = connectionPDO();
+$requete = "SELECT * FROM t_users";
+$result=$db->query($requete);
+
+?>
+<p>Bienvenue <?php echo "$mail" ?></p>
+
 <form method="post" action="#">
     <div>
         <label for="pseudo">Pseudo </label>
@@ -11,8 +26,7 @@
         <label for="newmdp">Nouveau mot de passe </label>
         <input type="password" placeholder="Nouveau mdp" name="newmdp">
     </div>
-    <div>
 
 
-    <input type="submit" value="Envoyer !" name="compte">
+        <input type="submit" value="Envoyer !" name="compte">
 </form>
