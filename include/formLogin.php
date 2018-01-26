@@ -11,6 +11,10 @@
     </div>
     <br>
     <div>
+        <a href="index.php?page=forget">Mot de passe oublié ?</a>
+    </div>
+    <br>
+    <div>
         <input type="reset" value="Effacer">
         <input type="submit" value="Envoyer !" name="login">
     </div>
