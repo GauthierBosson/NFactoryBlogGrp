@@ -36,6 +36,8 @@ if (isset($_POST['login'])) {
                         }else{
                             echo ("<script>redirection(\"index.php?page=accueil\")</script>");
                         }
+                        $_SESSION['id'] = $donnees['ID_USER'];
+                        $_SESSION['mdp'] = $donnees['USERPASSWORD'];
                     }
                     echo ("<a href=\"index.php?page=accueil\">Vous êtes authentifié, viendez à la page d'accueil</a>");
                 }
