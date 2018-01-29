@@ -12,6 +12,7 @@ if(isset($_POST["formulaire"])) {
     $header.='Content-Transfer-Encoding: 8bit';
 
 
+
     if($_POST["nom"] == ""){
         array_push($tabErreur, "Veuillez saisir votre nom");
     }
