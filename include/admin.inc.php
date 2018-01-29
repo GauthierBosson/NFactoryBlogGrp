@@ -21,11 +21,11 @@ if (isset($_SESSION['admin']) == 1){
             <option value='4'>4</option>
             <option value='5'>5</option>
             </select> "."</td>"
-                ."<td>".
-                "<input type='submit' value='Mettre a jour' name='formulaire'>"."</form>"."</td>"."</tr>");
+                ."<td>"."<input type='text' name='id'>"."</td>"."</tr>");
 
         }
         echo("</table>");
+        echo "<input type='submit' value='Mettre a jour' name='formulaire'> </form>";
         if(isset($_POST['formulaire'])){
             $id=$_POST['id'];
             $choix=$_POST['select'];
