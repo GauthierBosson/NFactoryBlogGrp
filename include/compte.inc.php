@@ -1,32 +1,68 @@
 <h1>Mon compte</h1>
+
 <?php
-
-if (!isset($_SESSION['login'])) {
-    header ('Location: compte.php');
-    exit();
-}
-$mail = $_POST['mail'];
+$id = $_SESSION['id'];
 $db = connectionPDO();
-$requete = "SELECT * FROM t_users";
-$result=$db->query($requete);
+$sql = "SELECT * FROM t_users WHERE ID_USER = '$id'  ";
+$reponse =  $db->query($sql);
+while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)){
+    echo "Votre Nom : " . $donnees['USERNAME'] . "<br/>" .
+        "Votre Prenom : " . $donnees['USERFNAME'] . "<br/>" .
+        "Votre Mail : " . $donnees['USERMAIL'] . "<br/>" ;
+}
+echo "<form method='post' action='#' > <input name='modifier' value='Modifier vos informations' type='submit'></form>";
 
-?>
-<p>Bienvenue <?php echo "$mail" ?></p>
+if (isset($_POST['modifier'])){
+    echo ("<form method='post' action='#'>
+            <label for='nom'>Nouveau nom : </label><input type='text' name='newNom' value=''><br>
+            <label for='prenom'>Nouveau prénom : </label><input type='text' name='newPrenom'><br>
+            <label for='email'>Nouvelle adresse email : </label><input type='text' name='newEmail'><br>
+            <label for='newMdp'>Nouveau mot de passe : </label><input type='password' name='newMdp'><br>
+            <label for='mdp'>Mot de passe : </label><input type='password' name='mdp'><br>
+            <input type='submit' value='Modifier mes informations' name='newInfo'>
+</form>");
+}
+if(isset($_POST['newInfo'])){
+    $taberreur = array();
+    $nom = $_POST['newNom'];
+    $prenom = $_POST['newPrenom'];
+    $email = $_POST['newEmail'];
+    $mdp = $_POST['mdp'];
+    $newMdp = $_POST['newMdp'];
 
-<form method="post" action="#">
-    <div>
-        <label for="pseudo">Pseudo </label>
-        <input type="text" placeholder="Votre Titre" name="titre">
-    </div>
-    <div>
-        <label for="mdp">Mot de passe  </label>
-        <input type="text" placeholder="mdp" name="mdp">
-    </div>
-    <div>
-        <label for="newmdp">Nouveau mot de passe </label>
-        <input type="password" placeholder="Nouveau mdp" name="newmdp">
-    </div>
+    if($nom == ""){
+        array_push($taberreur,"Veuillez saisir un nom");
+    }
+    if($prenom == ""){
+        array_push($taberreur,"Veuillez saisir un prénom");
+    }
+    if($email == ""){
+        array_push($taberreur,"Veuillez saisir un email");
+    }
+    if($mdp == ""){
+        array_push($taberreur,"Veuillez saisir votre mot de passe");
+    }
+    if(count($taberreur)!= 0){
+        $message = "<ul>";
+        for($i=0;$i<count($taberreur);$i++){
+            $message .= "<li>".$taberreur[$i]."</li>";
+        }
+        $message .= "</ul>";
+        echo($message);
 
+    }else{
+        $mdp = sha1($mdp);
+        if($mdp!= $_SESSION['mdp']){
+            echo "Erreur";
+        }else {
+            $newMdp = sha1($newMdp);
+            //$db=connectionPDO('localhost' , 'NFactoryBlog' , 'root' , '');
+            $requete = "UPDATE t_users SET USERNAME = '$nom', USERFNAME = '$prenom', USERMAIL = '$email', USERPASSWORD = '$newMdp'   WHERE ID_USER = '$id'";
+            $result = $db->query($requete);
+        }
+    }
 
-        <input type="submit" value="Envoyer !" name="compte">
-</form>
+}
+else {
+    echo "Veuillez vous connecter";
+}

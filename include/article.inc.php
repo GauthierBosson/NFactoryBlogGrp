@@ -35,20 +35,12 @@ if(isset($_SESSION['login']) == 1 ){
             }
             else {
                 $message = addslashes(htmlentities($message , ENT_HTML5 , 'UTF-8'));
-                $chapo=addslashes(htmlentities($chapo));
-                $titre=addslashes(htmlentities($titre));
+                $chapo = addslashes(htmlentities($chapo));
+                $titre = addslashes(htmlentities($titre));
                 $requete = "INSERT INTO t_articles (ID_ARTICLE, ARTTITRE, ARTCHAPO,
                         ARTCONTENU, ARTDATE)
                         VALUES (NULL, '$titre', '$chapo', '$message', NOW());";
-                if($result = $db->query($requete)) {
-                    if ($ligne = $result->rowCount() > 0) {
-                        $_SESSION['login'] = 1;
-
-                    }
-                    else
-                        $_SESSION['login'] = 0;
-
-                }
+                $_SESSION['login'] = ($result = $db->query($requete)) ? 1 : 0 ;
                 unset($db);
             }
         }
