@@ -1,1 +1,2 @@
-# NFactoryBlogGrp
+# NFactoryBlog
+Exercice blog
