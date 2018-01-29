@@ -62,9 +62,9 @@ if(isset($_POST['forget'])) {
                              <tr>
                                <td>
                                  
-                                 <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
-                                 Voici votre code de récupération: <b>'.$recup_code.'</b>
-                                 A bientôt sur <a href="http://primfx.com/">PrimFX.com</a> !
+                                 <div align="center">Bonjour,</div>
+                                 Voici votre code de récupération: <b>'.$recupCode.'</b>
+                                 A bientôt sur <a href="http://primfx.com/">Localhost</a> !
                                  
                                </td>
                              </tr>
@@ -81,7 +81,8 @@ if(isset($_POST['forget'])) {
                      </body>
                      </html>
                      ';
-                    mail($recupMailmail, "Récupération de mot de passe - test.com", $message, $header);
+                    mail($recupMail, "Récupération de mot de passe - test.com", $message, $header);
+                    header("Location:http://localhost/NFactoryBlog/index.php?page=recuperation");
 
 
                     //$recupInsert = $db->prepare('INSERT INTO recuperation(mail,code) VALUES (?,?)');
@@ -96,3 +97,51 @@ if(isset($_POST['forget'])) {
         echo "Veuillez renseigner votre adresse mail";
     }
 }
+if(isset($_POST['verif_submit'],$_POST['verif_code'])) {
+    if(!empty($_POST['verif_code'])) {
+        $verif_code = htmlspecialchars($_POST['verif_code']);
+        $verif_req = $db->prepare('SELECT id FROM recuperation WHERE mail = ? AND code = ?');
+        $verif_req->execute(array($_SESSION['recupMail'],$verif_code));
+        $verif_req = $verif_req->rowCount();
+        if($verif_req == 1) {
+            $up_req = $db->prepare('UPDATE recuperation SET confirme = 1 WHERE mail = ?');
+            $up_req->execute(array($_SESSION['recupMail']));
+            header('Location:http://localhost/NFactoryBlog/index.php?page=recuperation?section=changemdp');
+        } else {
+            $error = "Code invalide";
+        }
+    } else {
+        $error = "Veuillez entrer votre code de confirmation";
+    }
+}
+if(isset($_POST['change_submit'])) {
+    if(isset($_POST['change_mdp'],$_POST['change_mdpc'])) {
+        $verif_confirme = $db->prepare('SELECT confirme FROM recuperation WHERE mail = ?');
+        $verif_confirme->execute(array($_SESSION['recupMail']));
+        $verif_confirme = $verif_confirme->fetch();
+        $verif_confirme = $verif_confirme['confirme'];
+        if($verif_confirme == 1) {
+            $mdp = htmlspecialchars($_POST['change_mdp']);
+            $mdpc = htmlspecialchars($_POST['change_mdpc']);
+            if(!empty($mdp) AND !empty($mdpc)) {
+                if($mdp == $mdpc) {
+                    $mdp = sha1($mdp);
+                    $ins_mdp = $db->prepare('UPDATE membres SET motdepasse = ? WHERE mail = ?');
+                    $ins_mdp->execute(array($mdp,$_SESSION['recupMail']));
+                    $del_req = $db->prepare('DELETE FROM recuperation WHERE mail = ?');
+                    $del_req->execute(array($_SESSION['recupMail']));
+                    header('Location:http://127.0.0.1/path/connexion/');
+                } else {
+                    $error = "Vos mots de passes ne correspondent pas";
+                }
+            } else {
+                $error = "Veuillez remplir tous les champs";
+            }
+        } else {
+            $error = "Veuillez valider votre mail grâce au code de vérification qui vous a été envoyé par mail";
+        }
+    } else {
+        $error = "Veuillez remplir tous les champs";
+    }
+}
+?>

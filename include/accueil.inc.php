@@ -15,11 +15,11 @@ if (isset($_GET['debut'])){
 }
 
 $premiereEntree = ($pageActuelle-1) *$msgParPage; // On calcul la première entrée à lire
-$sql ="SELECT * FROM t_articles 
+$sql ="SELECT * FROM t_articles
 
-LEFT JOIN t_categories_has_t_articles ON t_articles.ID_ARTICLE=t_categories_has_t_articles.T_ARTICLES_ID_ARTICLE 
+LEFT JOIN t_categories_has_t_articles ON t_articles.ID_ARTICLE=t_categories_has_t_articles.T_ARTICLES_ID_ARTICLE
 LEFT JOIN t_categories ON t_categories_has_t_articles.T_CATEGORIES_ID_CATEGORIE=t_categories.ID_CATEGORIE
-ORDER BY ID_ARTICLE DESC LIMIT   $premiereEntree,   $msgParPage   
+ORDER BY ID_ARTICLE DESC LIMIT   $premiereEntree,   $msgParPage
 ";
 
 $reponse = $db -> query($sql);
@@ -51,4 +51,7 @@ for($i=1; $i<=$nombreDePage; $i++)
     }
 }
 echo '</p>';
+
+
+
 
