@@ -21,6 +21,11 @@
         </div>
         <br>
         <div>
+            <img src="captcha.php" />
+            <input type="text" name="captcha" />
+        </div>
+        <br>
+        <div>
             <input type="submit" value="Envoyer !" name="formulaire">
         </div>
     </form>

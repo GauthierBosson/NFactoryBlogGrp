@@ -20,7 +20,7 @@
                 echo ("<li><a href=\"index.php?page=admin\">Administration </a></li>");
             }
         ?>
-
+        <li><a href="index.php?page=email">Contact</a></li>
     </ul>
     <hr>
 
