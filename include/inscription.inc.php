@@ -6,6 +6,11 @@ if(isset($_POST["formulaire"])) {
     $prenom = $_POST['prenom'];
     $mail = trim($_POST['mail']);
     $mdp = trim($_POST['password']);
+    $header="MIME-Version: 1.0\r\n";
+    $header.='From:"Nfactoryhihi.com"<support@nfactory.com>'."\n";
+    $header.='Content-Type:text/html;charset="utf-8"'."\n";
+    $header.='Content-Transfer-Encoding: 8bit';
+
 
     if($_POST["nom"] == ""){
         array_push($tabErreur, "Veuillez saisir votre nom");
