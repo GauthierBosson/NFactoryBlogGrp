@@ -40,7 +40,7 @@ if(isset($_POST["formulaire"])) {
     else {
         // Requete permettant de me connecter a ma BDD
 
-       $db = connectionPDO();
+        $db = connectionPDO();
 
         $requeteLogin = ("SELECT * FROM `t_users` WHERE `USERMAIL` = '$mail'");
 
@@ -49,24 +49,29 @@ if(isset($_POST["formulaire"])) {
             if (($ligne= $result->rowCount()) != 0){
                 echo "Votre e-mail est deja utilisé ";
             }else{
-                if(isset($_POST['captcha'])) {
-                    if($_POST['captcha'] != $_SESSION['captcha']) {
-                        echo "Captcha invalide !";
+                if(isset($_POST['check1'])) {
+                    if(isset($_POST['captcha'])) {
+                        if($_POST['captcha'] != $_SESSION['captcha']) {
+                            echo "Captcha invalide !";
 
-                    } else {
-                        $longueurKey = 15;
-                        $key = "";
-                        for($i=1;$i<$longueurKey;$i++){
-                            $key .=mt_rand(0,9);
-                        }
-                        $mdp = sha1($mdp);
-                        $requete = "INSERT INTO t_users (ID_USER, USERNAME, USERFNAME,
+
+
+
+
+                        } else {
+                            $longueurKey = 15;
+                            $key = "";
+                            for($i=1;$i<$longueurKey;$i++){
+                                $key .=mt_rand(0,9);
+                            }
+                            $mdp = sha1($mdp);
+                            $requete = "INSERT INTO t_users (ID_USER, USERNAME, USERFNAME,
                             USERMAIL, USERPASSWORD, USERDATEINS, T_ROLES_ID_ROLE,confirmkey)
                             VALUES (NULL, '$nom', '$prenom', '$mail', '$mdp', NULL, 5,$key);";
 
-                        $result2=$db->query($requete);
+                            $result2=$db->query($requete);
 
-                        $message='
+                            $message='
                 <html>
                     <body>
                         <div align="center">
@@ -74,11 +79,14 @@ if(isset($_POST["formulaire"])) {
                         </div>
                     </body>
                 </html>';
-                        mail($mail,"Veuillez valider votre compte en utilisant cette clé:",$message,$header);
+                            mail($mail,"Veuillez valider votre compte en utilisant cette clé:",$message,$header);
 
+                        }
                     }
+                    unset($db);
+                } else {
+                    echo "vous n'avez pas validez les cgu";
                 }
-                unset($db);
             }
 
         }else{
