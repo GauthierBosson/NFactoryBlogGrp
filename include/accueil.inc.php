@@ -22,8 +22,8 @@ LEFT JOIN t_categories ON t_categories_has_t_articles.T_CATEGORIES_ID_CATEGORIE=
 ORDER BY ID_ARTICLE DESC LIMIT   $premiereEntree,   $msgParPage   
 ";
 
-$reponse = $db -> query($sql);
 
+$reponse = $db -> query($sql);
 
 
 
@@ -35,13 +35,25 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)) {
     $articleChapo = html_entity_decode($donnees['ARTCHAPO']);
 
 
-    echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO'] ."<hr>" ."</h3>";
+    echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO'] ."<hr>" ."</h3>" . "<em>".$donnees['CATLIBELLE']."</em>";
 
 
 
 
 
 
+}
+$sql = "SELECT * FROM t_articles 
+
+LEFT JOIN t_categories_has_t_articles ON t_articles.ID_ARTICLE=t_categories_has_t_articles.T_ARTICLES_ID_ARTICLE 
+LEFT JOIN t_categories ON t_categories_has_t_articles.T_CATEGORIES_ID_CATEGORIE=t_categories.ID_CATEGORIE
+WHERE ID_CATEGORIE = 3 ORDER BY ID_ARTICLE DESC LIMIT 0,3";
+$reponse = $db->query($sql) or die(mysqli_error());
+
+while ($donnees= $reponse->fetch(PDO::FETCH_ASSOC)){
+    $articleId = $donnees['ID_ARTICLE'];
+
+    echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO'] ."<hr>" ."</h3>" ;
 }
 echo '<p align ="center">Page : ';
 for ($i = 1; $i <= $nombreDePage; $i++) {
