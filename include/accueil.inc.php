@@ -15,11 +15,11 @@ if (isset($_GET['debut'])){
 }
 
 $premiereEntree = ($pageActuelle-1) *$msgParPage; // On calcul la première entrée à lire
-$sql ="SELECT * FROM t_articles
+$sql ="SELECT * FROM t_articles 
 
-LEFT JOIN t_categories_has_t_articles ON t_articles.ID_ARTICLE=t_categories_has_t_articles.T_ARTICLES_ID_ARTICLE
+LEFT JOIN t_categories_has_t_articles ON t_articles.ID_ARTICLE=t_categories_has_t_articles.T_ARTICLES_ID_ARTICLE 
 LEFT JOIN t_categories ON t_categories_has_t_articles.T_CATEGORIES_ID_CATEGORIE=t_categories.ID_CATEGORIE
-ORDER BY ID_ARTICLE DESC LIMIT   $premiereEntree,   $msgParPage
+ORDER BY ID_ARTICLE DESC LIMIT   $premiereEntree,   $msgParPage   
 ";
 
 $reponse = $db -> query($sql);
@@ -29,29 +29,27 @@ $reponse = $db -> query($sql);
 
 
 
-while ($donnees = $reponse -> fetch(PDO::FETCH_ASSOC)){
+while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)) {
+    $articleId = $donnees['ID_ARTICLE'];
+    $articleTitle = html_entity_decode($donnees['ARTTITRE']);
+    $articleChapo = html_entity_decode($donnees['ARTCHAPO']);
 
-    echo (html_entity_decode( "<div>"."<br/>" . "<h2>". $donnees['ARTTITRE'] . "</h2>". "<br/>"
-        . "<h3>".  $donnees['ARTCHAPO'] ."</h3>". "<br/>"
-        . "<div>". $donnees['ARTCONTENU'] ."</div>" . "<br/>"
-        . "</div>" . $donnees['CATLIBELLE']."<hr/>"));
+
+    echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO'] ."<hr>" ."</h3>";
+
+
+
+
+
 
 }
 echo '<p align ="center">Page : ';
-for($i=1; $i<=$nombreDePage; $i++)
-{
+for ($i = 1; $i <= $nombreDePage; $i++) {
     //On va faire notre condition
-    if($i == $pageActuelle)
-    {
-        echo ' [ '.$i.' ] ';
-    }
-    else
-    {
-        echo ' <a href="index.php?page=accueil&amp;debut='.$i.'">'.$i.'</a> ';
+    if ($i == $pageActuelle) {
+        echo ' [ ' . $i . ' ] ';
+    } else {
+        echo ' <a href="index.php?page=accueil&amp;debut=' . $i . '">' . $i . '</a> ';
     }
 }
 echo '</p>';
-
-
-
-

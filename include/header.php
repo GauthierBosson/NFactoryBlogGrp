@@ -23,5 +23,10 @@
         ?>
         <li><a href="index.php?page=email">Contact</a></li>
     </ul>
+    <form method="post" action="index.php?page=search">
+        <input type="text" name="barre" placeholder="recherche"/>
+        <input type="submit" value="valider" />
+
+    </form>
     <hr>
 </header>
