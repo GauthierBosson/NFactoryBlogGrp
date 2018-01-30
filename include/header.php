@@ -12,6 +12,7 @@
 
             echo("<li><a href=\"index.php?page=compte\">Compte</a></li>");
             echo("<li><a href=\"index.php?page=article\">Article</a></li>");
+            echo("<li><a href=\"index.php?page=chatbox\">Chat</a></li>");
             echo("<li><a href=\"index.php?page=logout\">Logout</a></li>");
         }
         //com
