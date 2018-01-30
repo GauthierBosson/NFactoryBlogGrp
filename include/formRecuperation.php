@@ -1,3 +1,4 @@
+<div class="col-sm-9">
 <h1>Récupération du mot de passe</h1>
 <form method="post" action="#">
     <div>
@@ -7,3 +8,4 @@
         <input type="submit" value="Valider" name="valider">
     </div>
 </form>
+</div>

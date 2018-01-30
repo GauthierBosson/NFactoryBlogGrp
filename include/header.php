@@ -1,4 +1,7 @@
-<header>
+<header class="col-sm-12">
+    <div class="button">NFactory
+        Blog</div>
+
     <ul>
         <li><a href="index.php?page=accueil">Accueil</a></li>
 
@@ -24,10 +27,10 @@
         ?>
         <li><a href="index.php?page=email">Contact</a></li>
     </ul>
-    <form method="post" action="index.php?page=search">
-        <input type="text" name="barre" placeholder="recherche"/>
-        <input type="submit" value="valider" />
+    <form class="recherche form-inline" method="post" action="index.php?page=search">
+        <input class="form-control mr-sm-2" type="text" name="barre" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success btn-sm my-0" type="submit">Search</button>
 
     </form>
-    <hr>
+
 </header>

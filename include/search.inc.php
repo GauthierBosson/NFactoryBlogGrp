@@ -1,3 +1,4 @@
+<div class="col-sm-9">
 <h1>RESULTAT DE LA RECHERCHE</h1>
 <?php
 $db = connectionPDO();
@@ -24,4 +25,5 @@ if (isset($_POST['barre']) && !empty($_POST['barre'])){
 
 
 }
-
+?>
+</div>

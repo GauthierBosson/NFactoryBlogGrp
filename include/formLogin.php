@@ -1,3 +1,4 @@
+<div class="col-sm-9">
 <form action='#' method="POST">
     <br>
     <div>
@@ -20,3 +21,4 @@
         <input type="submit" value="Envoyer !" name="login">
     </div>
 </form>
+    </div>
