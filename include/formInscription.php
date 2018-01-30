@@ -1,3 +1,4 @@
+<div class="col-sm-9">
 <form action='#' method="POST">
     <br>
     <div>
@@ -37,3 +38,4 @@
 
 
 <a href="rss.php">Flux RSS</a>
+</div>

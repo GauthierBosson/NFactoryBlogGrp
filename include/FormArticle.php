@@ -1,4 +1,4 @@
-
+<div class="col-sm-9">
 <form method="post" action="#">
         <div>
         <label for="titre">Titre de votre article </label>
@@ -25,3 +25,4 @@
 
         <input type="submit" value="Envoyer !" name="article">
 </form>
+</div>

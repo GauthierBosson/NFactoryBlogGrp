@@ -1,4 +1,4 @@
-
+<div class="col-sm-9">
 <table>
     <tr>
         <th>Nom</th>
@@ -28,3 +28,4 @@
     ?>
 
 </table>
+</div>
