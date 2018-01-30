@@ -14,7 +14,7 @@ if (isset($_COOKIE['visite'])) {
 ?>
 <?php
 
-echo ( "Ceci est votre ". $_COOKIE['visite'] ." visite !");
+echo ( "<p>Ceci est votre ". $_COOKIE['visite'] ." visite !</p>");
 
 ?>
 <!DOCTYPE html>

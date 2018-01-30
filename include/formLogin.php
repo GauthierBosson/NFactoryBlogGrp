@@ -12,6 +12,7 @@
     <br>
     <div>
         <a href="index.php?page=recupMDP">Mot de passe oublié ?</a>
+        <a href="index.php?page=desinscription">Se désinscrire</a>
     </div>
     <br>
     <div>
