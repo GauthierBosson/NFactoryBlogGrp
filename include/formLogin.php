@@ -11,7 +11,7 @@
     </div>
     <br>
     <div>
-        <a href="index.php?page=forget">Mot de passe oublié ?</a>
+        <a href="index.php?page=recupMDP">Mot de passe oublié ?</a>
     </div>
     <br>
     <div>
