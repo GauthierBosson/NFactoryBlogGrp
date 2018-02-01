@@ -51,10 +51,11 @@ LEFT JOIN t_categories ON t_categories_has_t_articles.T_CATEGORIES_ID_CATEGORIE=
 WHERE ID_CATEGORIE = 3 ORDER BY ID_ARTICLE DESC LIMIT 0,3";
     $reponse = $db->query($sql) or die(mysqli_error());
     echo "<div class='miseEnAvant col-sm-3'> ";
+    echo "<div><h2>Articles de la Semaine</h2></div>";
     while ($donnees= $reponse->fetch(PDO::FETCH_ASSOC)){
         $articleId = $donnees['ID_ARTICLE'];
 
-        echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO'] ."<hr>" ."</h3>" ;
+        echo "<div class='articleSemaine'><h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO'] ."<hr>" ."</h3></div>" ;
     }
     echo "</div>";
     ?>

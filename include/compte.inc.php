@@ -1,3 +1,4 @@
+<div class="info">
 <h1>Mon compte</h1>
 
 <?php
@@ -10,17 +11,17 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)){
         "Votre Prenom : " . $donnees['USERFNAME'] . "<br/>" .
         "Votre Mail : " . $donnees['USERMAIL'] . "<br/>" ;
 }
-echo "<form method='post' action='#' > <input name='modifier' value='Modifier vos informations' type='submit'></form>";
+echo "<form method='post' action='#' > <input name='modifier' value='Modifier vos informations' type='submit'></form> </div>";
 
 if (isset($_POST['modifier'])){
-    echo ("<form method='post' action='#'>
+    echo ("<div class='changement'><form method='post' action='#'>
             <label for='nom'>Nouveau nom : </label><input type='text' name='newNom' value=''><br>
             <label for='prenom'>Nouveau prénom : </label><input type='text' name='newPrenom'><br>
             <label for='email'>Nouvelle adresse email : </label><input type='text' name='newEmail'><br>
             <label for='newMdp'>Nouveau mot de passe : </label><input type='password' name='newMdp'><br>
             <label for='mdp'>Mot de passe : </label><input type='password' name='mdp'><br>
             <input type='submit' value='Modifier mes informations' name='newInfo'>
-</form>");
+</form></div>");
 }
 if(isset($_POST['newInfo'])){
     $taberreur = array();

@@ -34,9 +34,9 @@ if(isset($_SESSION['login']) == 1 ){
                 echo "Erreur de connexion";
             }
             else {
-                $message = addslashes(htmlentities($message , ENT_HTML5 , 'UTF-8'));
-                $chapo = addslashes(htmlentities($chapo));
-                $titre = addslashes(htmlentities($titre));
+                $message = addslashes(htmlspecialchars($message , ENT_HTML5 , 'UTF-8'));
+                $chapo = addslashes(htmlspecialchars($chapo));
+                $titre = addslashes(htmlspecialchars($titre));
                 $requete = "INSERT INTO t_articles (ID_ARTICLE, ARTTITRE, ARTCHAPO,
                         ARTCONTENU, ARTDATE)
                         VALUES (NULL, '$titre', '$chapo', '$message', NOW());";

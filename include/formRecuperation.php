@@ -1,5 +1,5 @@
 <div class="col-sm-9">
-<h1>Récupération du mot de passe</h1>
+<h2>Récupération du mot de passe</h2>
 <form method="post" action="#">
     <div>
         <label for="email">Email : </label><input type="email" name="email">

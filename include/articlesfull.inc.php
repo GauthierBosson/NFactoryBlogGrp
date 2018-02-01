@@ -11,7 +11,8 @@ $requete = $db -> prepare("SELECT * FROM t_articles WHERE ID_ARTICLE = $id");
 
 $requete-> execute(array($id));
 $donnees=$requete->fetch();
-
+echo("<h2>".html_entity_decode($donnees['ARTTITRE'])."</h2><br>");
+echo("<h3>".html_entity_decode($donnees['ARTCHAPO'])."</h3><br>");
 echo(html_entity_decode($donnees['ARTCONTENU']));
 
 echo '<div class="publication1">'."Modifié le: " . date("F d Y H:i", getlastmod()).'</div>';

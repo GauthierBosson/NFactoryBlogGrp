@@ -5,6 +5,7 @@ if (isset($_SESSION['admin']) == 1){
         $db = connectionPDO();
         $requete = "SELECT * FROM t_users";
         $result=$db->query($requete);
+        echo "<h2>Tableau d'administration</h2>";
         echo"<table>";
         while ($donnees=$result->fetch(PDO::FETCH_ASSOC)){
             echo("<tr>

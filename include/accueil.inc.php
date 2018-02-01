@@ -35,8 +35,10 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)) {
     $articleChapo = html_entity_decode($donnees['ARTCHAPO']);
 
 
-    echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO']  ."</h3>" . "<em>".$donnees['CATLIBELLE']."</em>" ;
-    echo "<a href =\"index.php?page=edition&amp;id=$articleId\">Editer</a>"."<hr>";
+    echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO']  ."</h3>" . "<em> Tags : ".$donnees['CATLIBELLE']."</em>" ;
+    if (isset($_SESSION['admin']) == 1){
+        echo "<br><a href =\"index.php?page=edition&amp;id=$articleId\">Editer</a>"."<hr>";
+    }
 
 
 
