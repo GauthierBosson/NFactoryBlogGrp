@@ -143,7 +143,7 @@ main h2 a:hover {
 }
 
 
-.button{
+/*.button{
     background: #3498db;
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
     border-radius: 28px;
@@ -174,4 +174,42 @@ footer{
     text-align: center;
     position: fixed !important;
     bottom: 0px;
+}
+
+.enjoy-bite {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    margin: 0 auto;
+    border: 2px solid #0481bf;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+    font: normal 25px/45px "Advent Pro", Helvetica, sans-serif;
+    color: #008ebf;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0);
+    -webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+    -moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+    -o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+    transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+}
+
+.enjoy-bite:hover {
+    color: rgba(255,255,255,1);
+    background: #008ebf;
+}
+
+.enjoy-bite:active {
+    border: 2px solid #0187bf;
+    background: rgba(33,224,163,1);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
 }

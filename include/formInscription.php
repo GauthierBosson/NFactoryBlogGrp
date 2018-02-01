@@ -33,10 +33,10 @@
     </div>
     <br>
     <div>
-        <input type="submit" value="Envoyer !" name="formulaire">
+        <input class="enjoy-bite" type="submit" value="Envoyer !" name="formulaire">
     </div>
 </form>
 
 
-<a href="rss.php">Flux RSS</a>
+<a target="_blank" href="rss.php"><img width="70px" src="./assets/img/rss.png"></a>
 </div>
