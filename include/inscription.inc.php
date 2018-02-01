@@ -75,7 +75,11 @@ if(isset($_POST["formulaire"])) {
                 <html>
                     <body>
                         <div align="center">
+<<<<<<< HEAD
+                            <a href="http://localhost/NFactoryBlog/index.php?page=confirmation&amp;pseudo='.urlencode($mail).'&key'.$key.'">Confirmez votre compte !</a>
+=======
                             <a href="http://localhost/NFactoryBlogGrp/index.php?page=confirmation&amp;pseudo='.urlencode($mail).'&key'.$key.'">Confirmez votre compte !</a>
+>>>>>>> origin/develop
                         </div>
                     </body>
                 </html>';
@@ -99,5 +103,3 @@ else {
 
     include("./include/formInscription.php");
 }
-
-

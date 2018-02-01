@@ -12,6 +12,12 @@ if (isset($_COOKIE['visite'])) {
 
 }
 ?>
+<<<<<<< HEAD
+<?php
+
+echo ( "<p>Ceci est votre ". $_COOKIE['visite'] ." visite !</p>");
+=======
+>>>>>>> origin/develop
 
 <!DOCTYPE html>
 <html lang="fr">
