@@ -26,10 +26,22 @@
         ?>
         <li><a href="index.php?page=email">Contact</a></li>
     </ul>
+
     <form class="recherche form-inline" method="post" action="index.php?page=search">
         <input class="form-control mr-sm-2" type="text" name="barre" placeholder="Search" aria-label="Search"/>
         <button class="btn btn-outline-success btn-sm my-0" type="submit">Search</button>
 
     </form>
+
+
+    <hr>
+
+    <form method="post" action="index.php?page=search">
+        <input type="text" name="barre" placeholder="recherche"/>
+        <input type="submit" value="valider" />
+
+    </form>
+
+
 
 </header>

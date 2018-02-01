@@ -1,4 +1,5 @@
-<?php
+
+}<?php
 $db = connectionPDO();
 $msgParPage = 5 ;
 $retourTotale = $db->query("SELECT COUNT(*) AS total FROM T_ARTICLES");
@@ -43,6 +44,19 @@ while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)) {
 
 
 
+while ($donnees = $reponse->fetch(PDO::FETCH_ASSOC)) {
+    $articleId = $donnees['ID_ARTICLE'];
+    $articleTitle = html_entity_decode($donnees['ARTTITRE']);
+    $articleChapo = html_entity_decode($donnees['ARTCHAPO']);
+
+
+    echo "<h2>"."<a href=\"index.php?page=articlesfull&amp;id=$articleId\">".$donnees['ARTTITRE']."</a>"."</h2>"."<h3>" .$donnees['ARTCHAPO'] ."<hr>" ."</h3>";
+
+
+
+
+
+
 
 }
 
@@ -55,4 +69,7 @@ for ($i = 1; $i <= $nombreDePage; $i++) {
         echo ' <a href="index.php?page=accueil&amp;debut=' . $i . '">' . $i . '</a> ';
     }
 }
+
+echo '</p>';
+
 echo '</p>';
